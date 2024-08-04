@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.PrefersHomeIndicatorAutoHidden="true"
+    xmlns:basecontrols="clr-namespace:Caraspirators.Client.ViewControls.Common"
+    xmlns:controls="clr-namespace:Caraspirators.Client.ViewControls"
+    x:Class="Caraspirators.Client.Views.Base.PageBase">
+   
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="gradient1" EndPoint="0,1">
+                <GradientStop Color="LightPink"
+                       Offset="0" />
+                <GradientStop Color="HotPink"
+                       Offset="1.0" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  
+    <Grid Margin="-2"
+        IgnoreSafeArea="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{OnPlatform Android=0, iOS=2, Default=0}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!-- Error Indicator -->
+        <basecontrols:ErrorIndicator
+       Grid.Row="2"
+       IsError="{Binding IsErrorState, Mode=OneWay}"
+       ErrorImage="{Binding ErrorImage, Mode=OneWay}"
+       ErrorText="{Binding ErrorMessage, Mode=OneWay}"
+       VerticalOptions="Center"
+       HorizontalOptions="Center" />
+       
+
+        <!-- Busy Indicator -->
+        <basecontrols:LoadingIndicator
+     Grid.Row="2"
+     IsBusy="{Binding IsBusy, Mode=OneWay}"
+     LoadingText="{Binding LoadingText, Mode=OneWay}"
+     HorizontalOptions="Center"
+     VerticalOptions="Center" />
+    
+        <!-- Page Header -->
+        <Border x:Name="HeaderBoarder" Padding="0" Margin="0" Grid.Row="1"  BackgroundColor="#242B33">
+            <Grid 
+      x:Name="HeaderContentGrid"
+      Margin="0,4"
+      ColumnDefinitions="56,*,56"
+      RowDefinitions="Auto,Auto"
+      ColumnSpacing="0"
+      IgnoreSafeArea="True">
+                <!-- Page Header Label -->
+                <ImageButton 
+       x:Name="HamburgerButton"
+       Source="orgcarstorelogo.png"
+      Aspect="AspectFill" HeightRequest="110" WidthRequest="100"  VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+                <!--Clicked="HamburgerButton_Clicked"-->
+
+                <ImageButton
+       x:Name="NavigateBackButton"
+       Source="icnfavriut.png"
+       VerticalOptions="Center"
+       HorizontalOptions="Start"
+       Style="{StaticResource IconButtonStyle}"
+       Grid.Row="0"
+       Grid.Column="0"
+       />
+
+                <ImageButton
+       x:Name="CloseButton"
+       Source="icnfavriut.png"
+       VerticalOptions="Center"
+       HorizontalOptions="Start"
+       Style="{StaticResource IconButtonStyle}"
+       Grid.Row="0"
+       Grid.Column="0"
+    />
+
+                <!-- Page Header Label -->
+                <Label
+       Grid.Row="0"
+       Grid.Column="1"
+       x:Name="TitleLabel"
+       IsVisible="False"
+       VerticalOptions="Center"
+       HorizontalOptions="Fill"
+       HorizontalTextAlignment="Center"
+       VerticalTextAlignment="Center"
+       Margin="6,0,6,-1"
+     />
+
+                <!-- SeachBar Header  -->
+                <basecontrols:CustomSearchBar   
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HeightRequest="32" 
+                x:Name="SearchViewEntry"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" 
+                IsBarVisiable="{Binding IssearchbarVisiable, Mode=OneWay}"
+              />
+                <!--IsBarVisiable="{Binding IssearchbarVisiable, Mode=OneWay}"-->
+
+                <!-- Icons for Right Side -->
+                <Grid
+       x:Name="PageIconsGrid"
+       Grid.Row="0"
+       Grid.Column="2"
+       Margin="0,4"
+       VerticalOptions="Center"
+       HorizontalOptions="End" />
+            </Grid>
+        </Border>
+
+        <!-- Grid to contain Page Content -->
+        <Grid 
+     x:Name="PageContentGrid"
+     IgnoreSafeArea="True"/>
+        
+        
+    </Grid>
+
+    
+    
+</ContentPage>

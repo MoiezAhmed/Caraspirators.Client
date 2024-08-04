@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Border 
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Caraspirators.Client.ViewControls.Common.CustomSearchBar"
+             StrokeThickness=".5"
+             Padding="0" BackgroundColor="#242B33"
+             HorizontalOptions="StartAndExpand" 
+             IsVisible="false">
+   
+    <Border.Stroke>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="#FFFFFF"
+              Offset="0.1" />
+                <GradientStop Color="#FFFFFF"
+              Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Stroke>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="1" />
+        </Border.StrokeShape>
+        <Grid  Padding="5,0"
+               ColumnSpacing="0" 
+               IsVisible="true" 
+               ColumnDefinitions="*,Auto">
+            <Entry Grid.Column="0" 
+                   Text="what you searc about ?.."
+                   PlaceholderColor="#9A9494"
+                   FontSize="Micro"
+                   TextColor="#9A9494"
+                   FontFamily="RobotoSlabBold"
+                   />
+            <Image Source="icsearch.svg"
+                   Grid.Column="1"
+                   HeightRequest="22"
+                    BackgroundColor="#FFFFFF"/>
+        </Grid>
+    </Border>
+

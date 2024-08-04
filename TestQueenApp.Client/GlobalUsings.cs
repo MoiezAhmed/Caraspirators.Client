@@ -1,0 +1,16 @@
+﻿global using CommunityToolkit.Maui;
+global using Microsoft.Extensions.Logging;
+global using TestQueenApp.Client.Interfaces;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Collections.ObjectModel;
+global using TestQueenApp.Client.ViewModels;
+global using TestQueenApp.Client.Services;
+global using TestQueenApp.Client.IServices;
+global using Caraspirators.Client.Framework.Infrustructure.Repositries;
+global using Caraspirators.Client.Framework.Infrustructure.Abstracts;
+global using Caraspirators.Client.Framework.Infrustructure.Base;
+global using TestQueenApp.Client.Views;
+global using MonkeyCache.FileStore;
+global using MonkeyCache;
+global using TestQueenApp.Client.Constants;
+global using Caraspirator.Data.Shared.Entities;

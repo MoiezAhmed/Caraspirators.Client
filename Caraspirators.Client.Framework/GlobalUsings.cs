@@ -1,0 +1,11 @@
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Collections.ObjectModel;
+global using MonkeyCache;
+global using System.Text.RegularExpressions;
+global using Caraspirators.Client.Framework.Exceptions;
+global using System.Text.Json;
+global using Caraspirators.Client.Framework.Extensions;
+global using System.Text;
+global using Caraspirator.Data.Shared.Entities;
+global using Caraspirators.Client.Framework.Infrustructure.Abstracts;
+global using Caraspirators.Client.Framework.Infrustructure.Base;

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Caraspirators.Client.ViewControls.CustomPicker">
+    <ImageButton Source="icdwonarraw.svg" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="22" Margin="-10,0,0,0"/>
+    <Picker x:Name="CutPicker"  HorizontalTextAlignment="Center" Grid.Row="0"  HorizontalOptions="FillAndExpand"      ItemDisplayBinding="{Binding slug}"     FontFamily="RobotoSlabBold"  />
+</Grid>

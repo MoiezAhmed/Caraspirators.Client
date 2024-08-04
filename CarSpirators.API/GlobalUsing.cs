@@ -1,0 +1,19 @@
+﻿
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc;
+global using  AutoMapper;
+global using Caraspirator.Infrustructure.Data;
+global using Caraspirator.Infrustructure.Abstracts;
+global using Caraspirator.Data.Entities;
+global using Caraspirator.Data.Entities.DTO;
+global using Caraspirator.Infrustructure;
+global using Caraspirator.Services.Abstracts;
+global using Caraspirator.Services;
+global using Caraspirator.Data.AppMetaData;
+global using CarSpirators.API.Base;
+//global using Caraspirator.Library.Models.DTO;
+//global using Caraspirator.Library.Data;
+//global using Caraspirator.Library.Repositoris.Interface;
+//global using Caraspirator.Library.Repositries;
+//global using CarSpirators.API.Data;
+//global using CarSpirators.API.Services;

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<baseviews:ViewBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:baseviews="clr-namespace:Caraspirators.Client.Views.Base"
+              xmlns:viewmodels="clr-namespace:Caraspirators.Client.ViewModels"
+              xmlns:models="clr-namespace:Caraspirators.Client.Models"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              xmlns:controls="clr-namespace:Caraspirators.Client.ViewControls"
+              xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+              x:TypeArguments="viewmodels:HomePageViewModel"
+              x:DataType="viewmodels:HomePageViewModel" 
+              Shell.NavBarIsVisible="False"
+              PageMode="Home"
+              ContentDisplayMode="NavigationBar"
+              x:Class="Caraspirators.Client.Views.HomePage"
+              >
+
+    <baseviews:ViewBase.PageIcons>
+        <Border  Grid.Row="0" Grid.Column="2" Padding="7" VerticalOptions="Center" Margin="12,4" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="25" />
+            </Border.StrokeShape>
+            <ImageButton  Style="{StaticResource IconButtonStyle}" VerticalOptions="Center" HorizontalOptions="Center"  Margin="0"  Source="icnfavriut.png" BackgroundColor="White"   />
+        </Border>
+    </baseviews:ViewBase.PageIcons>
+
+    <baseviews:ViewBase.PageContent>
+
+        <ScrollView ScrollY="{Binding Scrolly}" Scrolled="OnScrolled"   VerticalScrollBarVisibility="Never" >
+            <!--<ScrollView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                EventName="Scrolled"
+                Command="{Binding WhenScrolledStartCommand}" />
+            </ScrollView.Behaviors>-->
+            <Grid Grid.Row="1" 
+                RowDefinitions="Auto,Auto,Auto,Auto"
+                RowSpacing="0"
+                Margin="14,0"
+                IsVisible="{Binding DataLoaded, Mode=OneWay}"
+                IgnoreSafeArea="True">
+               
+                <!--banner for ads part-->
+                <VerticalStackLayout    Grid.Row="0" Spacing="15" Padding="10">
+                    <CarouselView HorizontalOptions="End" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand" HeightRequest="120"   Grid.Row="0" ItemsSource="{Binding Categories}" >
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Category">
+                                <Grid Background="Transparent" >
+                                    <Border    HorizontalOptions="Center"  VerticalOptions="Center" HeightRequest="90" WidthRequest="280" >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="20" />
+                                        </Border.StrokeShape>
+                                        <Border.Background>
+                                            <LinearGradientBrush  EndPoint="1,1">
+                                                <GradientStopCollection>
+                                                    <GradientStop Offset=".5" Color="#E5D0FF"/>
+                                                    <GradientStop Offset="1" Color="#E5D0FF"/>
+                                                </GradientStopCollection>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Grid ColumnDefinitions="*,Auto" Padding="5" Background="Transparent" >
+                                            <Image Grid.Column="1" Source="washequipment.png" HorizontalOptions="Start"  WidthRequest="65"  />
+                                            <Label      Margin="2"                                        
+                                     Grid.Column="0"    
+                                     Text="Get Discount 14% and make you car clean Get Discount 14% and make you car clean Get Discount 14% and make you car clean"  
+                                     FontAttributes="Bold"
+                                     FontFamily="RobotoSlabRegular"
+                                     TextColor="Black" FontSize="12"
+                                     VerticalTextAlignment="End" HorizontalTextAlignment="Start"
+/>
+                                        </Grid>
+                                    </Border>
+                                    <Image 
+   Source="car1.png"  Grid.RowSpan="2"
+   VerticalOptions="Start"
+   Aspect="AspectFit"
+   HorizontalOptions="Start"
+   Margin="38,-8"  
+   HeightRequest="45"
+  />
+                                </Grid>
+
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <IndicatorView x:Name="brandindicator"  VerticalOptions="Center" HorizontalOptions="Center" IndicatorColor="LightGray" SelectedIndicatorColor="#baffc9"/>
+                </VerticalStackLayout>
+
+                <!--select car  part-->
+                <VerticalStackLayout  Grid.Row="1" Spacing="20"  HorizontalOptions="FillAndExpand">
+                    <Label  Text="Select Your Car" FontFamily="RobotoSlabBold" HorizontalOptions="StartAndExpand" />
+                    <Grid   ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" HorizontalOptions="Fill">
+                        <!--<ur:PickerField Title="Company"  ItemsSource="{Binding Categories}"  Padding="0" BorderColor="LightGrey" ItemDisplayBinding="{Binding slug}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF"   FontFamily="RobotoSlabBold"    HorizontalOptions="FillAndExpand"/>-->
+                        <controls:CustomPicker Title="Company" PickerItemSource="{Binding Categories}"  Grid.Column="0" Grid.ColumnSpan="2" />
+                        <controls:CustomPicker Title="Model" PickerItemSource="{Binding Categories}"   Grid.Row="1" Grid.Column="0" />
+                        <controls:CustomPicker Title="Year" PickerItemSource="{Binding Categories}"   Grid.Row="1" Grid.Column="1" />
+                        <controls:CustomPicker Title="Engine" PickerItemSource="{Binding Categories}"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <Button 
+                     Grid.Row="3"
+                     Grid.Column="0"
+                     CornerRadius="15"
+                     Grid.ColumnSpan="2"
+                     Text="Select" FontFamily="RobotoSlabBold"
+                     HorizontalOptions="FillAndExpand">
+                            <Button.Background>
+                                <RadialGradientBrush  Center="0.5,0.5">
+                                    <GradientStop Color="#69C609" Offset="1.0" />
+                                    <GradientStop Color="#09203F" Offset="1.5" />
+                                </RadialGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>  
+                </VerticalStackLayout>
+              
+                <!--categories part-->
+                <VerticalStackLayout  Grid.Row="2" Spacing="25" >
+                    <Label Text="Shop by Category" FontFamily="RobotoSlabBold" HorizontalOptions="StartAndExpand" />
+                    <CollectionView  ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="2" HorizontalItemSpacing="3" VerticalItemSpacing="3"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Category">
+                                <controls:CategoryCell 
+                  HorizontalOptions="Fill"
+                                       />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!--popular product part-->
+                <VerticalStackLayout  Grid.Row="3" Spacing="25">
+                    <Label Text="Most ordering"  FontFamily="RobotoSlabBold" HorizontalOptions="StartAndExpand" />
+                    <CollectionView  ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="1" VerticalItemSpacing="1"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Category">
+                                <Label Text="{Binding slug}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+            </Grid>
+      
+    </ScrollView>
+    
+    </baseviews:ViewBase.PageContent>
+  
+</baseviews:ViewBase>

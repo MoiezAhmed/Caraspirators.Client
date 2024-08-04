@@ -1,0 +1,9 @@
+﻿global using Caraspirator.Data.Entities;
+global using Microsoft.EntityFrameworkCore;
+global using Caraspirator.Infrustructure.Abstracts;
+global using Caraspirator.Infrustructure.Data;
+global using Caraspirator.Data.Entities.DTO;
+global using Microsoft.Extensions.DependencyInjection;
+global using Caraspirator.Infrustructure.Repositries;
+global using Caraspirator.Infrustructure.Infrustructure;
+global using System.Text.Json;

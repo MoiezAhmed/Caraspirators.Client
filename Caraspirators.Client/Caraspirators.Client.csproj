@@ -1,0 +1,144 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Caraspirators.Client</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>Caraspirators.Client</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.caraspirators.client</ApplicationId>
+		<ApplicationIdGuid>5055494d-e3d7-40ab-8bfc-d94a8bdecc58</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\OpenSans-Regular - Copy.ttf" />
+	  <None Remove="Resources\Fonts\RobotoSlab-Bold.ttf" />
+	  <None Remove="Resources\Fonts\RobotoSlab-Light.ttf" />
+	  <None Remove="Resources\Fonts\RobotoSlab-Medium.ttf" />
+	  <None Remove="Resources\Fonts\RobotoSlab-Regular.ttf" />
+	  <None Remove="Resources\Images\car.jpg" />
+	  <None Remove="Resources\Images\car1.png" />
+	  <None Remove="Resources\Images\carstorelogo.svg" />
+	  <None Remove="Resources\Images\icback.svg" />
+	  <None Remove="Resources\Images\iccaraspirlogo.svg" />
+	  <None Remove="Resources\Images\iccategory.svg" />
+	  <None Remove="Resources\Images\icdwonarraw.svg" />
+	  <None Remove="Resources\Images\ichome.svg" />
+	  <None Remove="Resources\Images\iclangauge.svg" />
+	  <None Remove="Resources\Images\iclogop.png" />
+	  <None Remove="Resources\Images\iclogop.svg" />
+	  <None Remove="Resources\Images\iclogos.svg" />
+	  <None Remove="Resources\Images\iclogout.svg" />
+	  <None Remove="Resources\Images\icnfavriut.svg" />
+	  <None Remove="Resources\Images\icnotification.svg" />
+	  <None Remove="Resources\Images\icperson.svg" />
+	  <None Remove="Resources\Images\icsearch.svg" />
+	  <None Remove="Resources\Images\icshoppingcart.svg" />
+	  <None Remove="Resources\Images\icssetting.svg" />
+	  <None Remove="Resources\Images\icwarning.svg" />
+	  <None Remove="Resources\Images\lastlogo.svg" />
+	  <None Remove="Resources\Images\lastonelogo.svg" />
+	  <None Remove="Resources\Images\logo.jpeg" />
+	  <None Remove="Resources\Images\logosay.svg" />
+	  <None Remove="Resources\Images\logotest.svg" />
+	  <None Remove="Resources\Images\logotesto.svg" />
+	  <None Remove="Resources\Images\newlogo.png" />
+	  <None Remove="Resources\Images\orgcarstorelogo.svg" />
+	  <None Remove="Resources\Images\pagebackground.png" />
+	  <None Remove="Resources\Images\washequipment.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+		<PackageReference Include="UraniumUI.Material" Version="2.5.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Caraspirators.Client.Framework\Caraspirators.Client.Framework.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="ViewControls\CategoryCell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ViewControls\Common\ErrorIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ViewControls\Common\LoadingIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ViewControls\CustomPicker.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ViewControls\Common\CustomSearchBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ViewControls\ProductCell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Base\PageBase.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CategoriesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ShoppingCartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SigninPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="newone\" />
+	</ItemGroup>
+
+</Project>

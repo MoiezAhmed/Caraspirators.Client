@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Caraspirators.Client.ViewControls.ProductCell"
+             xmlns:viewmodels="clr-namespace:Caraspirators.Client.ViewModels"
+             xmlns:models="clr-namespace:Caraspirators.Client.Models"
+             x:DataType="models:Category" 
+             x:Name="ProductCellRoot">
+    <Border HorizontalOptions="FillAndExpand">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+        <Grid RowDefinitions="Auto,*" Padding="5" RowSpacing="5">
+            <Image Grid.Row="0" Source="{Binding category_image}"  />
+            <Label Grid.Row="1" Text="{Binding slug}" HorizontalOptions="Center" FontSize="12" FontFamily="RobotoSlabBold"/>
+        </Grid>
+
+    </Border>
+</ContentView>

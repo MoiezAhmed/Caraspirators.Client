@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell 
+    x:Class="Caraspirators.Client.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Caraspirators.Client"
+     xmlns:view="clr-namespace:Caraspirators.Client.Views"
+    Shell.FlyoutBehavior="Disabled" >
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ThemeColor">#69C609</Color>
+            <Color x:Key="DarkColor">#242B33</Color>
+            <Color x:Key="GrayColor">Gray</Color>
+            <Color x:Key="BgColor">#FFFFFF</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource DarkColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ThemeColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource BgColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ThemeColor}"/>
+            </Style>
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}"/>
+            <DataTemplate x:Key="MenuTemplate">
+                <StackLayout Orientation="Horizontal">
+                    <Image Margin="30,10,20,10" Source="ichome.svg" WidthRequest="22" HeightRequest="22" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="Account" TextColor="#686868" FontSize="16" VerticalOptions="Center"/>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="FlyoutHeaderTemplate">
+                <ContentView BackgroundColor="{StaticResource ThemeColor}" HeightRequest="245">
+                    <Image Source="ichome.svg" WidthRequest="96" HeightRequest="96"
+                    HorizontalOptions="Center" VerticalOptions="Center"/>
+                </ContentView>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+
+    <FlyoutItem>
+
+        <Tab Title="Home" 
+             Icon="ichome.svg">
+            <ShellContent
+               Title="Home"
+               ContentTemplate="{DataTemplate view:HomePage}"
+               Route="HomePage" />
+
+         </Tab>
+        
+       <Tab Title="Categories"
+            Icon="iccategory.svg" >
+            <ShellContent
+      Title="Categories"
+      ContentTemplate="{DataTemplate view:CategoriesPage}"
+      Route="CategoriesPage" />
+        </Tab>
+
+        <Tab Title="ShoppingCart"
+       Icon="icshoppingcart.svg" >
+            <ShellContent
+       Title="Categories"
+       ContentTemplate="{DataTemplate view:ShoppingCartPage}"
+       Route="ShoppingCartPage" />
+        </Tab>
+
+        <Tab Title="Profile"
+       Icon="icperson.svg" >
+            <ShellContent
+       Title="Profile"
+       ContentTemplate="{DataTemplate view:ProfilePage}"
+       Route="ProfilePage" />
+        </Tab>
+
+    </FlyoutItem>
+
+
+    
+
+</Shell>

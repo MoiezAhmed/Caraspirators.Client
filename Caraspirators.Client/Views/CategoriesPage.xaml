@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Caraspirators.Client.Views.CategoriesPage"
+             xmlns:controls="clr-namespace:Caraspirators.Client.ViewControls.Common"
+             Title="CategoriesPage" Padding="0" 
+             xmlns:viewmodels="clr-namespace:Caraspirators.Client.ViewModels"
+             xmlns:models="clr-namespace:Caraspirators.Client.Models"
+             Shell.NavBarIsVisible="False">
+    <Grid  BackgroundColor="Red" IgnoreSafeArea="True"  Margin="-2"  RowDefinitions="Auto,*">
+        <!--header part-->
+        <Border Padding="1" Margin="0" Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"  BackgroundColor="#242B33">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,0,80" />
+            </Border.StrokeShape>
+            <Grid  BackgroundColor="#242B33" RowSpacing="0" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto" Margin="0,0">
+            <Image   Grid.Row="0" Grid.Column="0"  Source="orgcarstorelogo.svg"  Aspect="AspectFill" HeightRequest="110" WidthRequest="100"  VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+            <Border  Grid.Row="0" Grid.Column="2" Padding="7" VerticalOptions="Center" Margin="12,4" >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="25" />
+                </Border.StrokeShape>
+                <ImageButton  Style="{StaticResource IconButtonStyle}" VerticalOptions="Center" HorizontalOptions="Center"  Margin="0"  Source="icnfavriut.png" BackgroundColor="White"   />
+            </Border>
+
+                <controls:CustomSearchBar 
+                    HeightRequest="32"
+                    Margin="50,0,50,80" 
+                    Grid.Row="1" 
+                    HorizontalOptions="FillAndExpand" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" >
+                  
+                  
+                
+                </controls:CustomSearchBar>
+            
+        </Grid>
+        </Border>
+        <!--content part-->
+        <Grid Grid.Row="1" Margin="0,-60,0,0"    RowDefinitions="Auto,Auto" >
+            <CarouselView HorizontalOptions="End" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand" HeightRequest="120"   Grid.Row="0" ItemsSource="{Binding Categories}" >
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Category">
+                        <Grid Background="Transparent" >
+                            <Border    HorizontalOptions="Center"  VerticalOptions="Center" HeightRequest="90" WidthRequest="280" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <Border.Background>
+                                    <LinearGradientBrush  EndPoint="1,1">
+                                        <GradientStopCollection>
+                                            <GradientStop Offset=".5" Color="#E5D0FF"/>
+                                            <GradientStop Offset="1" Color="#E5D0FF"/>
+                                        </GradientStopCollection>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid ColumnDefinitions="*,Auto" Padding="5" Background="Transparent" >
+                                    <Image Grid.Column="1" Source="washequipment.png" HorizontalOptions="Start"  WidthRequest="65"  />
+                                    <Label      Margin="2"                                        
+                                     Grid.Column="0"    
+                                     Text="Get Discount 14% and make you car clean Get Discount 14% and make you car clean Get Discount 14% and make you car clean"  
+                                     FontAttributes="Bold"
+                                     FontFamily="RobotoSlabRegular"
+                                     TextColor="Black" FontSize="12"
+                                     VerticalTextAlignment="End" HorizontalTextAlignment="Start"
+/>
+                                </Grid>
+                            </Border>
+                            <Image 
+   Source="car1.png"  Grid.RowSpan="2"
+   VerticalOptions="Start"
+   Aspect="AspectFit"
+   HorizontalOptions="Start"
+   Margin="38,-8"  
+   HeightRequest="45"
+  />
+                        </Grid>
+
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+
+    </Grid>
+</ContentPage>
